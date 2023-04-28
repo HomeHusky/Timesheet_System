@@ -26,6 +26,7 @@ namespace Timesheets_System.Views.User
         TeamController _teamController = new TeamController();
         PositionController _positionController = new PositionController();
         DateTime myDateTime = DateTime.Today;
+        UserDTO UserDTO = new UserDTO();
 
         private string _current_user_id = frmLogin.user_id; // Lấy username của người dùng hiện tại với type string
         private UserDTO _current_user; // Tạo một người dùng hiện tại cục bộ để show thông tin
@@ -177,10 +178,12 @@ namespace Timesheets_System.Views.User
 
         private void frmInit()
         {
-            if (_current_user != null) 
-            {
+            if(_current_user_id != "")
+                {
                 try
                 {
+
+
                     _current_user = _userController.GetUserByID(_current_user_id);
 
                     UserDTO current_user_value = _userController.GetForeignValue(_current_user_id);
@@ -229,8 +232,10 @@ namespace Timesheets_System.Views.User
                     {
                         dateTimePickerDateHired.Value = _current_user.Date_Hired;
                     }
-                    txt_Phone.Text = _current_user.Phone.ToString();
-                    txt_Email.Text = _current_user.Email.ToString();
+                    if (_current_user.Phone != null) { txt_Phone.Text = _current_user.Phone.ToString(); }
+                    if (_current_user.Email != null) { txt_Email.Text = _current_user.Email.ToString(); }
+                    
+                    
                     txt_Taxcode.Text = _current_user.Tax_Code.ToString();
                     txt_Ethnic.Text = _current_user.Ethnic.ToString();
                     txt_Religion.Text = _current_user.Religion.ToString();

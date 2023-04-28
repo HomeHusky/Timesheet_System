@@ -268,3 +268,16 @@ D:\Git\Timesheets_System\Timesheets_System\bin\Debug\MimeKit.xml
 D:\Git\Timesheets_System\Timesheets_System\bin\Debug\MimeKit.dll.config
 D:\Git\Timesheets_System\Timesheets_System\obj\Debug\Timesheets_System.Views.frmForgotPassword.resources
 D:\Git\Timesheets_System\Timesheets_System\obj\Debug\Timesheets_System.Views.frmChangePassword.resources
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\BouncyCastle.Cryptography.dll
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MailKit.dll
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MimeKit.dll
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\BouncyCastle.Cryptography.xml
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MailKit.pdb
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MailKit.xml
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MailKit.dll.config
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MimeKit.pdb
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MimeKit.xml
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\bin\Debug\MimeKit.dll.config
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\obj\Debug\Timesheets_System.Views.frmChangePassword.resources
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\obj\Debug\Timesheets_System.Views.frmForgotPassword.resources
+D:\Goline\Goline_Timesheets_System\Timesheets_System\Timesheets_System\obj\Debug\Timesheets_System.Views.User.frmAcceptDeleteUser.resources
