@@ -81,6 +81,30 @@ namespace Timesheets_System.Models.DAO
             return _dbConnection.QueryFirstOrDefault<UserDTO>(query, parameters);
         }
 
+        public UserDTO CreateNewUser(UserDTO userDTO)
+        {
+            String query = "INSERT INTO user_tb  (username, password, fullname, gender, birth_date, email, phone, address, ethnic, religion, citizen_id, tax_code, social_insurance_no, date_hired, contract_no, team_id, position_id) VALUES(@username, '', @fullname, @gender, @birth_date, @email, @phone, @address, @ethnic, @religion, @citizen_id, @tax_code, @social_insurance_no, @date_hired, @contract_no, @team_id, @position_id) ";
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("username", userDTO.Username);
+            parameters.Add("fullname", userDTO.Fullname);
+            parameters.Add("gender", userDTO.Gender);
+            parameters.Add("birth_date", userDTO.Birth_Date);
+            parameters.Add("email", userDTO.Email);
+            parameters.Add("phone", userDTO.Phone);
+            parameters.Add("address", userDTO.Address);
+            parameters.Add("ethnic", userDTO.Ethnic);
+            parameters.Add("religion", userDTO.Religion);
+            parameters.Add("citizen_id", userDTO.Citizen_ID);
+            parameters.Add("tax_code", userDTO.Tax_Code);
+            parameters.Add("social_insurance_no", userDTO.Social_Insurance_No);
+            parameters.Add("date_hired", userDTO.Date_Hired);
+            parameters.Add("contract_no", userDTO.Contract_No);
+            parameters.Add("team_id", userDTO.Team_id);
+            parameters.Add("position_id", userDTO.Position_id);
+
+            return _dbConnection.QueryFirstOrDefault<UserDTO>(query, parameters);
+        }
+
         public UserDTO UpdateUser(UserDTO userDTO, string current_user)
         {
             String query = "UPDATE user_tb SET fullname=@fullname, gender=@gender, birth_date=@birth_date, email=@email, phone=@phone, address=@address, ethnic=@ethnic, religion=@religion, citizen_id=@citizen_id, tax_code=@tax_code, social_insurance_no=@social_insurance_no, date_hired=@date_hired, contract_no=@contract_no, team_id=@team_id, position_id=@position_id WHERE LOWER(username) = LOWER(@current_user)";

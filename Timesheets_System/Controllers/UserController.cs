@@ -39,6 +39,11 @@ namespace Timesheets_System.Controllers
             return _userDAO.LoadUserImage(current_user);
         }
 
+        public UserDTO CreateNewUser(UserDTO userDTO)
+        {
+            return _userDAO.CreateNewUser(userDTO);
+        }
+
         public UserDTO UpdateUserProfile(UserDTO userDTO, string current_user)
         {
             return _userDAO.UpdateUser(userDTO, current_user);

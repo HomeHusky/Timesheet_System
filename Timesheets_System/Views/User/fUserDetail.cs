@@ -44,6 +44,11 @@ namespace Timesheets_System.Views.User
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
+        public void DisableUpdatebtn()
+        {
+            this.btnUpdate.Visible = false; this.btnUpdate.Enabled = false;
+        }
+
         public void SetUsername(string username)
         {
             this._current_user_id = username;
@@ -177,35 +182,34 @@ namespace Timesheets_System.Views.User
         }
 
         private void frmInit()
-        {
-            if(_current_user_id != "")
+        {   //Id sẽ là biến string rỗng khi được gọi từ form DepartmentDetail
+            //Nên khi nếu bằng "" thì sẽ bỏ qua load form
+            //Load department cbx
+            List<DepartmentDTO> _departmentDTO = _departmentController.GetDepartmentDTO();
+            cb_Department.DataSource = _departmentDTO;
+            cb_Department.DisplayMember = "Department_name";
+            cb_Department.ValueMember = "Department_id";
+
+            //Load team cbx
+            string current_department_id = cb_Department.SelectedValue.ToString();
+            List<TeamDTO> _teamDTO = _teamController.GetTeamDTO(current_department_id);
+            cb_Team.DataSource = _teamDTO;
+            cb_Team.DisplayMember = "Team_name";
+            cb_Team.ValueMember = "Team_id";
+
+            //Load position cbx
+            List<PositionDTO> _positionDTO = _positionController.GetPositionDTO();
+            cb_Position.DataSource = _positionDTO;
+            cb_Position.DisplayMember = "Position_name";
+            cb_Position.ValueMember = "Position_id";
+
+            if (_current_user_id != "")
                 {
                 try
                 {
-
-
                     _current_user = _userController.GetUserByID(_current_user_id);
 
                     UserDTO current_user_value = _userController.GetForeignValue(_current_user_id);
-
-                    //Load department cbx
-                    List<DepartmentDTO> _departmentDTO = _departmentController.GetDepartmentDTO();
-                    cb_Department.DataSource = _departmentDTO;
-                    cb_Department.DisplayMember = "Department_name";
-                    cb_Department.ValueMember = "Department_id";
-
-                    //Load team cbx
-                    string current_department_id = cb_Department.SelectedValue.ToString();
-                    List<TeamDTO> _teamDTO = _teamController.GetTeamDTO(current_department_id);
-                    cb_Team.DataSource = _teamDTO;
-                    cb_Team.DisplayMember = "Team_name";
-                    cb_Team.ValueMember = "Team_id";
-
-                    //Load position cbx
-                    List<PositionDTO> _positionDTO = _positionController.GetPositionDTO();
-                    cb_Position.DataSource = _positionDTO;
-                    cb_Position.DisplayMember = "Position_name";
-                    cb_Position.ValueMember = "Position_id";
 
                     // Display user detail
                     txt_Fullname.Text = _current_user.Fullname;
@@ -232,21 +236,39 @@ namespace Timesheets_System.Views.User
                     {
                         dateTimePickerDateHired.Value = _current_user.Date_Hired;
                     }
+                    // Bình thường sẽ không có việc data = null khi thêm user. Chỉ để giảm bớt việc sửa thủ công trong database.
                     if (_current_user.Phone != null) { txt_Phone.Text = _current_user.Phone.ToString(); }
+                    else { txt_Phone.Text = ""; }
                     if (_current_user.Email != null) { txt_Email.Text = _current_user.Email.ToString(); }
-                    
-                    
-                    txt_Taxcode.Text = _current_user.Tax_Code.ToString();
-                    txt_Ethnic.Text = _current_user.Ethnic.ToString();
-                    txt_Religion.Text = _current_user.Religion.ToString();
-                    txt_Address.Text = _current_user.Address.ToString();
-                    txt_CitizenId.Text = _current_user.Citizen_ID.ToString();
-                    txt_SocialInsuranceNo.Text = _current_user.Social_Insurance_No.ToString();
-                    dateTimePickerDateHired.Value = _current_user.Date_Hired;
-                    txt_ContractNo.Text = _current_user.Contract_No.ToString();
-                    cb_Department.Text = current_user_value.Department_name;
-                    cb_Team.Text = current_user_value.Team_name;
-                    cb_Position.Text = current_user_value.Position_name;
+                    else { txt_Email.Text = ""; }
+                    if (_current_user.Tax_Code != null) { txt_Taxcode.Text = _current_user.Tax_Code.ToString(); }
+                    else { txt_Taxcode.Text = ""; }
+                    if (_current_user.Ethnic != null) { txt_Ethnic.Text = _current_user.Ethnic.ToString(); }
+                    else { txt_Ethnic.Text = ""; }
+                    if (_current_user.Religion != null) { txt_Religion.Text = _current_user.Religion.ToString(); }
+                    else { txt_Religion.Text = ""; }
+                    if (_current_user.Address != null) { txt_Address.Text = _current_user.Address.ToString(); }
+                    else { txt_Address.Text = ""; }
+                    if (_current_user.Citizen_ID != null) { txt_CitizenId.Text = _current_user.Citizen_ID.ToString(); }
+                    else { txt_CitizenId.Text = ""; }
+                    if (_current_user.Social_Insurance_No != null) { txt_SocialInsuranceNo.Text = _current_user.Social_Insurance_No.ToString(); }
+                    else { txt_SocialInsuranceNo.Text = ""; }
+                    if (_current_user.Contract_No != null) { txt_ContractNo.Text = _current_user.Contract_No.ToString(); }
+                    else { txt_ContractNo.Text = ""; }
+                    if (current_user_value != null)
+                    {
+                        if (current_user_value.Department_name != null) { cb_Department.Text = current_user_value.Department_name.ToString(); }
+                        else { cb_Department.Text = ""; }
+                        if (current_user_value.Team_name != null) { cb_Team.Text = current_user_value.Team_name.ToString(); }
+                        else { cb_Team.Text = ""; }
+                        if (current_user_value.Position_name != null) { cb_Position.Text = current_user_value.Position_name.ToString(); }
+                        else { cb_Position.Text = ""; }
+                    }else
+                    {
+                        cb_Department.Text = "";
+                        cb_Team.Text = "";
+                        cb_Position.Text = "";
+                    }
                 }
                 catch { }
             }
@@ -254,7 +276,6 @@ namespace Timesheets_System.Views.User
 
         private void enableControl()
         {
-
             // Cá nhân
             radioButtonMale.Enabled = true;
             radioButtonFemale.Enabled = true;
@@ -271,6 +292,7 @@ namespace Timesheets_System.Views.User
             txt_SocialInsuranceNo.Enabled = true;
 
             //Công việc
+            //Nếu là admin thì mới có quyền chỉnh sửa công việc
             if (frmLogin.loggedUser.Auth_Group_ID == PERMISSION_AUTH_GROUP.ADMIN)
             {
                 cb_Department.Enabled = true;
@@ -326,7 +348,7 @@ namespace Timesheets_System.Views.User
         {
             enableControl();
             btnCancel.Visible = false;
-            btnUpdate.Text = "Xác nhận";  
+            btnUpdate.Text = "XÁC NHẬN";  
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -339,12 +361,71 @@ namespace Timesheets_System.Views.User
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
-            {
+            {   //Sự kiện cho phép người dùng thao tác chỉnh sửa.
                 if (btnUpdate.Text == "CẬP NHẬT")
                 {
                     enableControl();
                 }
-                else
+
+                //Sự kiện thêm mới nhân viên
+                else if (btnUpdate.Text == "XÁC NHẬN")
+                {
+                    UserDTO newUser = new UserDTO();
+                    string newId = Guid.NewGuid().ToString();
+                    newUser.Username = newId;
+                    bool new_User_Gender;
+                    if (radioButtonMale.Checked == true && radioButtonFemale.Checked == false)
+                    {
+                        new_User_Gender = false;
+                    }
+                    else
+                    {
+                        new_User_Gender = true;
+                    }
+                    //Nếu chưa có sự thay đổi về ảnh đại diện, sẽ không update ảnh
+                    if (selectedImage)
+                    {
+                        try
+                        {
+                            _userController.UpDatePhotoByID(newUser.Username, ImageToByteArray(pictureBox1.Image));
+                        }
+                        catch (Exception) { }
+                    }
+                    //Check các giá trị nhập vào, nếu chưa nhập thì vẫn lưu vào data với giá trị là ""
+                    if (!ElementCheck()) return;
+
+                    //try to update data
+                    if (cb_Team.SelectedValue == null && newUser.Auth_Group_ID == PERMISSION_AUTH_GROUP.ADMIN)
+                    {
+                        MessageBox.Show("Phòng bạn chọn hiện tại chưa có team, vui lòng đợi hoặc chọn phòng khác!");
+                        enableControl();
+                        btnUpdate.Text = "XÁC NHẬN";
+                    }
+                    else
+                    {
+                        newUser.Fullname = txt_Fullname.Text;
+                        newUser.Gender = new_User_Gender;
+                        newUser.Birth_Date = dateTimePickerBirthday.Value;
+                        newUser.Email = txt_Email.Text;
+                        newUser.Phone = txt_Phone.Text;
+                        newUser.Address = txt_Address.Text;
+                        newUser.Ethnic = txt_Ethnic.Text;
+                        newUser.Religion = txt_Religion.Text;
+                        newUser.Citizen_ID = txt_CitizenId.Text;
+                        newUser.Tax_Code = txt_Taxcode.Text;
+                        newUser.Social_Insurance_No = txt_SocialInsuranceNo.Text;
+                        newUser.Date_Hired = dateTimePickerDateHired.Value;
+                        newUser.Contract_No = txt_ContractNo.Text;
+                        newUser.Team_id = cb_Team.SelectedValue.ToString();
+                        newUser.Position_id = cb_Position.SelectedValue.ToString();
+                        _userController.CreateNewUser(newUser);
+                        MessageBox.Show("Thêm mới thành công!");
+                    }
+                    this.Close();
+                }
+
+                //Sự kiện update thông tin nhân viên
+                else if (btnUpdate.Text == "LƯU")
                 {
                     if (radioButtonMale.Checked == true && radioButtonFemale.Checked == false)
                     {
@@ -355,7 +436,7 @@ namespace Timesheets_System.Views.User
                         current_User_Gender = true;
                     }
 
-                    //if not change image, won't update photo
+                    //Nếu chưa có sự thay đổi về ảnh đại diện, sẽ không update ảnh
                     if (selectedImage)
                     {
                         try
@@ -365,7 +446,7 @@ namespace Timesheets_System.Views.User
                         catch (Exception) { }
                     }
 
-                    //check text box not null
+                    //Check các giá trị nhập vào, nếu chưa nhập thì vẫn lưu vào data với giá trị là ""
                     if (!ElementCheck()) return;
 
                     //try to update data
@@ -397,6 +478,7 @@ namespace Timesheets_System.Views.User
                         _userController.UpdateUserProfile(userDTO, _current_user_id);
                         MessageBox.Show("Cập nhật thành công!");
                     }
+                    //Sau khi update thành công thì disable các box,...
                     disableControl();
                 }
             }

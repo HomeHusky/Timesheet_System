@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timesheets_System.Common.Const;
 using Timesheets_System.Controllers;
 using Timesheets_System.Models.DTO;
 
@@ -60,6 +61,10 @@ namespace Timesheets_System.Views.User
             // create a new instance of the form to be opened
             fUserDetail myNewForm = new fUserDetail();
 
+            if (frmLogin.loggedUser.Auth_Group_ID != PERMISSION_AUTH_GROUP.ADMIN)
+            {
+                myNewForm.DisableUpdatebtn();
+            }
             // Set any necessary properties on the new form here...
             // For example, you can pass the value of the first column to the new form
             myNewForm.SetUsername(value);
@@ -72,18 +77,24 @@ namespace Timesheets_System.Views.User
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-            if (btDelete.Text == "XÓA")
+            if (frmLogin.loggedUser.Auth_Group_ID == PERMISSION_AUTH_GROUP.ADMIN)
             {
-                label2.Text = "Chọn nhân viên bạn muốn xóa!";
-                checkDelete = true;
-                btDelete.Text = "HỦY";
+                    if (btDelete.Text == "XÓA")
+                {
+                    label2.Text = "Chọn nhân viên bạn muốn xóa!";
+                    checkDelete = true;
+                    btDelete.Text = "HỦY";
+                }
+                else if (btDelete.Text == "HỦY")
+                {
+                    btDelete.Text = "XÓA";
+                    checkDelete = false;
+                    label2.Text = "";
+                }
             }
-            else if (btDelete.Text == "HỦY")
+            else
             {
-                btDelete.Text = "XÓA";
-                checkDelete = false;
-                label2.Text = "";
-                
+                MessageBox.Show("Bạn chưa có quyền thực hiện thao tác này!");
             }
         }
 
@@ -111,15 +122,21 @@ namespace Timesheets_System.Views.User
                     }
                 }
             }
-            
         }
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            fUserDetail newUser = new fUserDetail();
-            newUser.SetUsername("");
-            newUser.createSaveButton();
-            newUser.ShowDialog();
+            if (frmLogin.loggedUser.Auth_Group_ID == PERMISSION_AUTH_GROUP.ADMIN)
+            {
+                fUserDetail newUser = new fUserDetail();
+                newUser.SetUsername("");
+                newUser.createSaveButton();
+                newUser.ShowDialog();
+            } else
+            {
+                MessageBox.Show("Bạn chưa có quyền thực hiện thao tác này!");
+            }
+                
 
         }
     }
