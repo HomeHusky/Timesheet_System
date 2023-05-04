@@ -61,7 +61,7 @@ namespace Timesheets_System.Views
             _userController.ChangePassword(txbUsername.Text, encrypted);
 
             MessageBox.Show("Thông tin đã được gửi tới email của bạn. Hãy đăng nhập bằng mật khẩu mới",
-                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             frmLogin.loggedUser = null;
             frmLogin frm = new frmLogin();

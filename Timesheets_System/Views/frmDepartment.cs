@@ -175,7 +175,5 @@ namespace Timesheets_System.Views
                 ReBind();
             }
         }
-
-
     }
 }
