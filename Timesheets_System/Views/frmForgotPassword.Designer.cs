@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btForgotPassword = new System.Windows.Forms.Button();
             this.txbUsername = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,6 +45,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(661, 258);
             this.panel3.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 25);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Nhập tài khoản";
             // 
             // btForgotPassword
             // 
@@ -63,22 +73,12 @@
             // 
             // txbUsername
             // 
-            this.txbUsername.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbUsername.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbUsername.Location = new System.Drawing.Point(259, 39);
             this.txbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbUsername.Name = "txbUsername";
-            this.txbUsername.Size = new System.Drawing.Size(345, 29);
+            this.txbUsername.Size = new System.Drawing.Size(345, 31);
             this.txbUsername.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 25);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Nhập tài khoản";
             // 
             // frmForgotPassword
             // 
@@ -86,7 +86,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 394);
             this.Controls.Add(this.panel3);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmForgotPassword";
             this.Text = "frmForgotPassword";
             this.panel3.ResumeLayout(false);
