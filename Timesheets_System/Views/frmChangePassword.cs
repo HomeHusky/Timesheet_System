@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timesheets_System.Common.Util;
@@ -39,9 +41,12 @@ namespace Timesheets_System.Views
             }
         }
 
+        // Check độ mạnh mật khẩu
         private bool isValidPassword(string password)
         {
-            string specialChars = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~\t\n\r";
+            string specialChars = "^(?=.*?[^\\w]).+$";
+            bool isMatch = Regex.IsMatch(password, specialChars);
+
             if (password.Length < 8)
             {
                 MessageBox.Show("Mật khẩu phải dài hơn 8 kí tự",
@@ -60,18 +65,22 @@ namespace Timesheets_System.Views
                         "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            foreach(char c in specialChars)
+            if (!password.Any(char.IsDigit))
             {
-                if (password.Contains(c))
-                {
-                    return true;
-                }
-            }
-            MessageBox.Show("Mật khẩu phải chứa 1 kí tự",
+                MessageBox.Show("Mật khẩu phải chứa 1 chữ số",
                         "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
+                return false;
+            }
+            if (!isMatch)
+            {
+                MessageBox.Show("Mật khẩu phải chứa 1 kí tự đặc biệt",
+                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
 
+        // Check input
         private bool checkConstraint(string oldPassword, string newPassword, string newPasswordConfirm, string userPassword)
         {
             if (String.IsNullOrEmpty(newPassword) || String.IsNullOrEmpty(oldPassword) || String.IsNullOrEmpty(newPasswordConfirm))

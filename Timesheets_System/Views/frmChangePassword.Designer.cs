@@ -105,7 +105,7 @@
             // 
             // txbOldPassword
             // 
-            this.txbOldPassword.Font = new System.Drawing.Font("Segoe UI Light", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbOldPassword.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbOldPassword.Location = new System.Drawing.Point(259, 39);
             this.txbOldPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbOldPassword.Name = "txbOldPassword";
