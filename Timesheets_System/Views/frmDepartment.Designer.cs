@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDepartment));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtvgDepartment = new System.Windows.Forms.DataGridView();
+            this.Column_TeamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txbDepartmentID = new System.Windows.Forms.TextBox();
             this.txbDepartmentName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -53,9 +56,6 @@
             this.btnMaximize = new System.Windows.Forms.Button();
             this.pn_Close = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.Column_TeamID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_TeamName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_DepartmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvgDepartment)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -69,36 +69,74 @@
             this.dtvgDepartment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtvgDepartment.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dtvgDepartment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtvgDepartment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtvgDepartment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtvgDepartment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtvgDepartment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column_TeamID,
             this.Column_TeamName,
             this.Column_DepartmentID});
             this.dtvgDepartment.GridColor = System.Drawing.SystemColors.Highlight;
-            this.dtvgDepartment.Location = new System.Drawing.Point(0, 44);
+            this.dtvgDepartment.Location = new System.Drawing.Point(0, 47);
             this.dtvgDepartment.Name = "dtvgDepartment";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtvgDepartment.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtvgDepartment.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtvgDepartment.RowHeadersVisible = false;
             this.dtvgDepartment.RowHeadersWidth = 51;
             this.dtvgDepartment.RowTemplate.Height = 24;
             this.dtvgDepartment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtvgDepartment.Size = new System.Drawing.Size(561, 595);
+            this.dtvgDepartment.Size = new System.Drawing.Size(561, 592);
             this.dtvgDepartment.TabIndex = 2;
+            this.dtvgDepartment.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dtvgDepartment_CellBeginEdit);
+            // 
+            // Column_TeamID
+            // 
+            this.Column_TeamID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column_TeamID.DataPropertyName = "Department_id";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column_TeamID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column_TeamID.FillWeight = 188.1243F;
+            this.Column_TeamID.HeaderText = "Mã bộ phận";
+            this.Column_TeamID.MinimumWidth = 6;
+            this.Column_TeamID.Name = "Column_TeamID";
+            this.Column_TeamID.ReadOnly = true;
+            this.Column_TeamID.Width = 120;
+            // 
+            // Column_TeamName
+            // 
+            this.Column_TeamName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column_TeamName.DataPropertyName = "Department_name";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column_TeamName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column_TeamName.FillWeight = 48.99667F;
+            this.Column_TeamName.HeaderText = "Tên bộ phận";
+            this.Column_TeamName.MinimumWidth = 6;
+            this.Column_TeamName.Name = "Column_TeamName";
+            this.Column_TeamName.ReadOnly = true;
+            this.Column_TeamName.Width = 150;
+            // 
+            // Column_DepartmentID
+            // 
+            this.Column_DepartmentID.DataPropertyName = "Descriptions";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Column_DepartmentID.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column_DepartmentID.FillWeight = 62.87906F;
+            this.Column_DepartmentID.HeaderText = "Mô tả";
+            this.Column_DepartmentID.MinimumWidth = 6;
+            this.Column_DepartmentID.Name = "Column_DepartmentID";
+            this.Column_DepartmentID.ReadOnly = true;
             // 
             // txbDepartmentID
             // 
@@ -341,43 +379,6 @@
             this.btnClose.Size = new System.Drawing.Size(20, 18);
             this.btnClose.TabIndex = 2;
             this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // Column_TeamID
-            // 
-            this.Column_TeamID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column_TeamID.DataPropertyName = "Department_id";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column_TeamID.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column_TeamID.FillWeight = 188.1243F;
-            this.Column_TeamID.HeaderText = "Mã bộ phận";
-            this.Column_TeamID.MinimumWidth = 6;
-            this.Column_TeamID.Name = "Column_TeamID";
-            this.Column_TeamID.ReadOnly = true;
-            this.Column_TeamID.Width = 120;
-            // 
-            // Column_TeamName
-            // 
-            this.Column_TeamName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column_TeamName.DataPropertyName = "Department_name";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column_TeamName.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column_TeamName.FillWeight = 48.99667F;
-            this.Column_TeamName.HeaderText = "Tên bộ phận";
-            this.Column_TeamName.MinimumWidth = 6;
-            this.Column_TeamName.Name = "Column_TeamName";
-            this.Column_TeamName.ReadOnly = true;
-            this.Column_TeamName.Width = 150;
-            // 
-            // Column_DepartmentID
-            // 
-            this.Column_DepartmentID.DataPropertyName = "Descriptions";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Column_DepartmentID.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column_DepartmentID.FillWeight = 62.87906F;
-            this.Column_DepartmentID.HeaderText = "Mô tả";
-            this.Column_DepartmentID.MinimumWidth = 6;
-            this.Column_DepartmentID.Name = "Column_DepartmentID";
-            this.Column_DepartmentID.ReadOnly = true;
             // 
             // frmDepartment
             // 

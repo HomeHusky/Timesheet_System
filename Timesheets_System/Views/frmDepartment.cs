@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using Timesheets_System.Common.Const;
 using Timesheets_System.Controllers;
@@ -46,12 +47,14 @@ namespace Timesheets_System.Views
         {
             var list = _departmentController.GetDepartmentDTO();
             dtvgDepartment.DataSource = list;
+
             txbDepartmentID.Enabled = false;
             txbDepartmentName.Enabled = false;
             txbDescription.Enabled = false;
             btAdd.Text = "Thêm";
             btDelete.Text = "Xóa";
             btEdit.Visible = true;
+            dtvgDepartment.Enabled = true;
         }
 
         // Bind data vào input
@@ -151,6 +154,22 @@ namespace Timesheets_System.Views
             btAdd.Text = "Cập nhật";
             btDelete.Text = "Hủy";
             btEdit.Visible = false;
+
+            int selectedIndex = dtvgDepartment.CurrentRow.Index;
+
+            foreach (DataGridViewRow row in dtvgDepartment.Rows)
+            {
+                if (row.Index == selectedIndex)
+                {
+                    row.ReadOnly = false;
+                }
+                else
+                {
+                    row.Selected = false;
+                    row.DefaultCellStyle.BackColor = Color.Gray;
+                }
+            }
+            dtvgDepartment.Enabled = false;
         }
 
         private void btDelete_Click(object sender, EventArgs e)
@@ -173,6 +192,7 @@ namespace Timesheets_System.Views
             }
         }
 
+        #region "Custom title"
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -184,7 +204,6 @@ namespace Timesheets_System.Views
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-        #region "Custom title"
         private void pn_Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -238,5 +257,11 @@ namespace Timesheets_System.Views
             btnClose.BackColor = COLORS.TITLE_BACKCOLOR;
         }
         #endregion
+        bool allowEdit = false;
+        private void dtvgDepartment_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            e.Cancel = !allowEdit;
+        }
+
     }
 }

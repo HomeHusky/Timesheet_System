@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timesheets_System.Common.Const;
 using Timesheets_System.Controllers;
 using Timesheets_System.Models.DTO;
 
@@ -93,8 +95,7 @@ namespace Timesheets_System.Views
             return true;
         }
 
-        // Action của nút add
-        private void btAdd_Click(object sender, EventArgs e)
+        private void btAdd_Click_1(object sender, EventArgs e)
         {
             if (btAdd.Text == "Thêm")
             {
@@ -150,8 +151,32 @@ namespace Timesheets_System.Views
             }
         }
 
-        // Action nút delete
-        private void btDelete_Click(object sender, EventArgs e)
+        private void btEdit_Click_1(object sender, EventArgs e)
+        {
+            EnableTextbox();
+            txbTeamId.Enabled = false;
+            btAdd.Text = "Cập nhật";
+            btDelete.Text = "Hủy";
+            btEdit.Visible = false;
+
+            int selectedIndex = dtvgTeam.CurrentRow.Index;
+
+            foreach (DataGridViewRow row in dtvgTeam.Rows)
+            {
+                if (row.Index == selectedIndex)
+                {
+                    row.ReadOnly = false;
+                }
+                else
+                {
+                    row.Selected = false;
+                    row.DefaultCellStyle.BackColor = Color.Gray;
+                }
+            }
+            dtvgTeam.Enabled = false;
+        }
+
+        private void btDelete_Click_1(object sender, EventArgs e)
         {
             if (btDelete.Text == "Hủy")
             {
@@ -170,15 +195,71 @@ namespace Timesheets_System.Views
                 ReBind();
             }
         }
-
-        // Action nút edit. Edit action ở trên nút add.
-        private void btEdit_Click(object sender, EventArgs e)
+#region "Custom title"
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
-            EnableTextbox();
-            txbTeamId.Enabled = false;
-            btAdd.Text = "Cập nhật";
-            btDelete.Text = "Hủy";
-            btEdit.Visible = false;
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private static extern void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+        private void pn_Minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pn_Maximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void pn_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pn_Minimize_MouseEnter(object sender, EventArgs e)
+        {
+            pn_Minimize.BackColor = COLORS.TITLE_ENTERCOLOR;
+        }
+
+        private void pn_Minimize_MouseLeave(object sender, EventArgs e)
+        {
+            pn_Minimize.BackColor = COLORS.TITLE_BACKCOLOR;
+        }
+
+        private void pn_Maximize_MouseEnter(object sender, EventArgs e)
+        {
+            pn_Maximize.BackColor = COLORS.TITLE_ENTERCOLOR;
+        }
+
+        private void pn_Maximize_MouseLeave(object sender, EventArgs e)
+        {
+            pn_Maximize.BackColor = COLORS.TITLE_BACKCOLOR;
+        }
+
+        private void pn_Close_MouseEnter(object sender, EventArgs e)
+        {
+            pn_Close.BackColor = COLORS.TITLE_ENTERCOLOR;
+            btnClose.BackColor = COLORS.TITLE_ENTERCOLOR;
+        }
+
+        private void pn_Close_MouseLeave(object sender, EventArgs e)
+        {
+            pn_Close.BackColor = COLORS.TITLE_BACKCOLOR;
+            btnClose.BackColor = COLORS.TITLE_BACKCOLOR;
+        }
+#endregion
     }
 }
