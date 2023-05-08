@@ -431,3 +431,12 @@ D:\Timesheet_System-main\Timesheets_System\obj\Debug\Timesheets_System.csproj.Co
 D:\Timesheet_System-main\Timesheets_System\obj\Debug\Timesheets_System.csproj.CopyComplete
 D:\Timesheet_System-main\Timesheets_System\obj\Debug\Timesheets_System.exe
 D:\Timesheet_System-main\Timesheets_System\obj\Debug\Timesheets_System.pdb
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Timesheet_System-main\Timesheets_System\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll

@@ -32,6 +32,13 @@ namespace Timesheets_System.Models.DAO
             return _dbConnection.Query<TimesheetsDTO>(query, parameters).ToList();
         }
 
+        // Query for report
+        public List<TimesheetsDTO> GetTimeSheetsReport()
+        {
+            string query = "SELECT fullname, year, month, total_working_days,\ntotal_working_hours FROM timesheets_tb";
+            return _dbConnection.Query<TimesheetsDTO>(query).ToList();
+        }
+
         public bool TimesheetsExist(TimesheetsDTO _timesheetsDTO)
         {
             string query = @"SELECT COUNT(fullname) " +

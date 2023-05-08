@@ -30,6 +30,12 @@ namespace Timesheets_System.Controllers
             return _timesheetsDAO.GetTimeSheetsByMonth(_timesheetsDTO);
         }
 
+        //Report
+        public List<TimesheetsDTO> GetTimeSheetsReport()
+        {
+            return _timesheetsDAO.GetTimeSheetsReport();
+        }
+
         public bool TimesheetsExist(TimesheetsDTO _timesheetDTO)
         {
             return _timesheetsDAO.TimesheetsExist(_timesheetDTO);
